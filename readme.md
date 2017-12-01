@@ -3,7 +3,7 @@
 gcloud auth login
 
 gcloud auth list
-gcloud config set account aulia.sintha88@gmail.com
+gcloud config set account leilaniyaallysonhaga@gmail.com
 
 gcloud projects create sissy-bites
 gcloud projects list
