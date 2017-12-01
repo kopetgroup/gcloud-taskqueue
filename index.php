@@ -17,15 +17,17 @@ $app->get('/create', function ($request, $response) {
 
   //$task_name = $task->add('kopet');
   //echo 'create task: '.$task_name ;
+
   $queue = new PushQueue('kopet');
   $e = $queue->addTasks([$task]);
+  $e = implode(',',$e);
   return 'Task added: '.$e;
 
 });
 
 $app->post('/queue', function ($request, $response) {
 
-  $msg = 'iki kueue '.implode(',',$e).' @'.date('Y-m-d H:i:s');
+  $msg = 'kopet';
   $url = 'https://hooks.slack.com/services/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';
   $data = ['text' => $msg];
   $headers = "Content-Type: application/json";
@@ -57,6 +59,6 @@ $app->get('/cron', function ($request, $response) {
   $context = stream_context_create($context);
   $result = file_get_contents($url, false, $context);
   return $result;
-  
+
 });
 $app->run();
